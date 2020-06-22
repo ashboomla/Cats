@@ -31,8 +31,12 @@ import retrofit2.Response
 - Breed temperament
 - Link to more information on the breed which opens in an external browser experience
 - Project must have version control and use git
+
+ - https://docs.thecatapi.com/api-reference/breeds/breeds-list
+ - https://docs.thecatapi.com/api-reference/images/images-search
  */
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
