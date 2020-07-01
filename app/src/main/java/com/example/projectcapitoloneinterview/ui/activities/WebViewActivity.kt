@@ -1,7 +1,9 @@
-package com.example.projectcapitoloneinterview.ui
+package com.example.projectcapitoloneinterview.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.webkit.WebChromeClient
+import android.webkit.WebViewClient
 import com.example.projectcapitoloneinterview.R
 import kotlinx.android.synthetic.main.activity_web_view.*
 
@@ -11,8 +13,9 @@ class WebViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
 
-        var url = intent.getStringExtra("WEBKEY")
-        val myView = webView
+        val url = intent.getStringExtra("WEBKEY")
+        webView.webChromeClient = WebChromeClient()
+        webView.webViewClient = WebViewClient()
         webView.loadUrl(url)
     }
 }

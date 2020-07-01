@@ -5,16 +5,11 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.projectcapitoloneinterview.R
 import com.example.projectcapitoloneinterview.data.Breed
-import com.example.projectcapitoloneinterview.data.CatData
-import com.example.projectcapitoloneinterview.ui.DetailsActivity
+import com.example.projectcapitoloneinterview.ui.activities.DetailsActivity
 import kotlinx.android.synthetic.main.breed_row_adapter.view.*
-import kotlinx.android.synthetic.main.images_row_adapter.view.*
 
 class CatsBreedsAdapter(var myContext: Context, var mList: List<Breed>) :
     RecyclerView.Adapter<CatsBreedsAdapter.CatsBreedsViewHolder>() {

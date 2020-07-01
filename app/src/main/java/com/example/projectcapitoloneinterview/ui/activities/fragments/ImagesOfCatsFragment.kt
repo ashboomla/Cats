@@ -1,4 +1,4 @@
-package com.example.projectcapitoloneinterview.ui.cats.fragments
+package com.example.projectcapitoloneinterview.ui.activities.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -16,7 +16,6 @@ import com.example.projectcapitoloneinterview.ui.cats.CatsRepository
 import com.example.projectcapitoloneinterview.ui.cats.CatsViewModel
 import com.example.projectcapitoloneinterview.ui.cats.CatsViewModelFactory
 import com.example.projectcapitoloneinterview.network.ApiInterface
-import com.example.projectcapitoloneinterview.data.CatData
 import kotlinx.android.synthetic.main.fragment_images_of_cats.*
 
 /**
@@ -25,9 +24,9 @@ import kotlinx.android.synthetic.main.fragment_images_of_cats.*
 
 class ImagesOfCatsFragment : Fragment() {
 
-    lateinit var viewModel : CatsViewModel
-    lateinit var factory: CatsViewModelFactory
-    lateinit var adapter: CatsImageAdapter
+    private lateinit var viewModel : CatsViewModel
+    private lateinit var factory: CatsViewModelFactory
+    private lateinit var adapter: CatsImageAdapter
 
             override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +39,7 @@ class ImagesOfCatsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var repository = CatsRepository(ApiInterface.getApiInterface())
+        val repository = CatsRepository(ApiInterface.getApiInterface())
         factory = CatsViewModelFactory(repository)
         viewModel = ViewModelProviders.of(this,factory).get(CatsViewModel::class.java)
 
@@ -49,13 +48,8 @@ class ImagesOfCatsFragment : Fragment() {
         viewModel.getImages().observe(viewLifecycleOwner, Observer {list ->
             Log.i("aaa", list.toString())
             adapter =
-                CatsImageAdapter(
-                    activity as Context,
-                    list
-                )
-
-           recyclerViewImages.adapter = adapter
+                CatsImageAdapter(activity as Context, list)
+            recyclerViewImages.adapter = adapter
         })
-
     }
 }

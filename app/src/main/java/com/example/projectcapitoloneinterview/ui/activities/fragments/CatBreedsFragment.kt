@@ -1,4 +1,4 @@
-package com.example.projectcapitoloneinterview.ui.cats.fragments
+package com.example.projectcapitoloneinterview.ui.activities.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -9,27 +9,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectcapitoloneinterview.R
 import com.example.projectcapitoloneinterview.network.ApiInterface
 import com.example.projectcapitoloneinterview.ui.adapters.CatsBreedsAdapter
-import com.example.projectcapitoloneinterview.ui.adapters.CatsImageAdapter
 import com.example.projectcapitoloneinterview.ui.cats.CatsRepository
 import com.example.projectcapitoloneinterview.ui.cats.CatsViewModel
 import com.example.projectcapitoloneinterview.ui.cats.CatsViewModelFactory
 import kotlinx.android.synthetic.main.fragment_cat_breeds.*
-import kotlinx.android.synthetic.main.fragment_images_of_cats.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class CatBreedsFragment : Fragment() {
 
-    lateinit var viewModel : CatsViewModel
-    lateinit var factory: CatsViewModelFactory
-    lateinit var adapter: CatsBreedsAdapter
+    private lateinit var viewModel : CatsViewModel
+    private lateinit var factory: CatsViewModelFactory
+    private lateinit var adapter: CatsBreedsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +42,7 @@ class CatBreedsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var repository = CatsRepository(ApiInterface.getApiInterface())
+        val repository = CatsRepository(ApiInterface.getApiInterface())
         factory = CatsViewModelFactory(repository)
         viewModel = ViewModelProvider(this,factory).get(CatsViewModel::class.java)
 

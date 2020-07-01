@@ -1,4 +1,4 @@
-package com.example.projectcapitoloneinterview.ui
+package com.example.projectcapitoloneinterview.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,6 @@ import android.os.Bundle
 import com.example.projectcapitoloneinterview.R
 import com.example.projectcapitoloneinterview.data.Breed
 import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.breed_row_adapter.*
 
 class DetailsActivity : AppCompatActivity() {
 lateinit var breed: Breed
@@ -22,7 +21,7 @@ lateinit var breed: Breed
         text_view_temperament.text = breed.temperament
 
         button_wiki.setOnClickListener {
-            var webIntent = Intent(this, WebViewActivity::class.java)
+            val webIntent = Intent(this, WebViewActivity::class.java)
             webIntent.putExtra("WEBKEY",breed.wikipedia_url)
             startActivity(webIntent)
         }
